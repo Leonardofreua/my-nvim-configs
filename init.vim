@@ -30,8 +30,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' >> '
 let g:airline#extensions#tabline#left_alt_sep = '>>'
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Setting options
 syntax enable
@@ -70,6 +70,12 @@ vmap <C-c> "*y
 " Paste Content
 nmap <C-v> "*p
 
+" Trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" NERDTreeToggle
+map <C-o> :NERDTreeToggle<CR>
+
 " Switch between panes
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -107,3 +113,5 @@ nnoremap <c-g> :Commits<cr>
 nnoremap <c-m> :Maps<cr>
 " Look for general occurrences
 nnoremap <c-f> :Ag <space>
+" Git status
+nnoremap <leader>gst :GFiles?<CR>
