@@ -1,4 +1,3 @@
-
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
@@ -24,27 +23,38 @@ let g:gruvbox_bold= '4'
 " UltiSnips
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
+ 
+" Airline settings
 
 " Enable air-line smarttab
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' >> '
 let g:airline#extensions#tabline#left_alt_sep = '>>'
 
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['mode', 'branch'])
+    let g:airline_section_b = airline#section#create_left(['ffenc', 'hunks', '%f'])
+endfunction
+autocmd VimEnter * call AirlineInit()
 
 " Setting options
 syntax enable
+filetype plugin on
 set hidden
 set number
 set relativenumber
 set inccommand=split
 set incsearch
 set hlsearch
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 set clipboard=unnamedplus
 set smarttab
 set updatetime=300
+set expandtab
+set textwidth=120
+set softtabstop=4
+set shiftwidth=4
+set autoindent
 
 " Definitions
 let mapleader = "\<space>"
@@ -52,17 +62,17 @@ let mapleader = "\<space>"
 " Adds a semicolon to the end of the line
 nnoremap <leader>; A;<esc>
 " Open vim configuration file
-nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<CR>
 " Load init.vim
-nnoremap <leader>cv :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>cv :source ~/.config/nvim/init.vim<CR>
 " Fast saving
-nnoremap <leader>w :w!<cr>
+nnoremap <leader>w :w!<CR>
 " New empty line
-nnoremap <leader> :a<cr><cr>.<cr>
+nnoremap <leader> :a<CR><CR>.<CR>
 " Undo all changes
-nnoremap <leader>uu :u0<cr>
+nnoremap <leader>uu :u0<CR>
 " Undo last change
-nnoremap <leader>u :undo<cr>
+nnoremap <leader>u :undo<CR>
 " Select all content
 map <C-a> <esc>ggVG<CR>
 " Copy content
@@ -104,13 +114,13 @@ nnoremap <C-t>    :bnext<CR>
 "-------- Filters --------"
 
 " Find files
-nnoremap <c-p> :Files<cr>
+nnoremap <c-p> :Files<CR>
 " History files
-nnoremap <c-e> :History<cr>
+nnoremap <c-e> :History<CR>
 " Git commits
-nnoremap <c-g> :Commits<cr>
+nnoremap <c-g> :Commits<CR>
 " Normal mode mappings
-nnoremap <c-m> :Maps<cr>
+nnoremap <c-m> :Maps<CR>
 " Look for general occurrences
 nnoremap <c-f> :Ag <space>
 " Git status
