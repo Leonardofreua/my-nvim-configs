@@ -12,6 +12,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 " Theme
@@ -37,6 +39,10 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 
+" Black settings
+let b:ale_fixers = ['black']
+let b:ale_fix_on_save = 1
+
 " Setting options
 syntax enable
 filetype plugin on
@@ -55,6 +61,8 @@ set textwidth=120
 set softtabstop=4
 set shiftwidth=4
 set autoindent
+set path+=**
+set wildmenu
 
 " Definitions
 let mapleader = "\<space>"
@@ -122,6 +130,13 @@ nnoremap <c-g> :Commits<CR>
 " Normal mode mappings
 nnoremap <c-m> :Maps<CR>
 " Look for general occurrences
-nnoremap <c-f> :Ag <space>
+nnoremap <c-f> :Ag<space>
 " Git status
 nnoremap <leader>gst :GFiles?<CR>
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" Black
+nnoremap <F9> :Black<CR>
+
