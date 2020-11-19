@@ -84,9 +84,9 @@ nnoremap <leader>u :undo<CR>
 " Select all content
 map <C-a> <esc>ggVG<CR>
 " Copy content
-vmap <C-c> "*y
+vmap <C-c> "+y
 " Paste Content
-nmap <C-v> "*p
+nmap <C-v> "+p
 
 " Trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
