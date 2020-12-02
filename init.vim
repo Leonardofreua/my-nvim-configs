@@ -8,7 +8,6 @@ Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
@@ -32,12 +31,17 @@ let g:UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' >> '
 let g:airline#extensions#tabline#left_alt_sep = '>>'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 function! AirlineInit()
-    let g:airline_section_a = airline#section#create(['mode', 'branch'])
-    let g:airline_section_b = airline#section#create_left(['ffenc', 'hunks', '%f'])
+    let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+    let g:airline_section_b = airline#section#create_left(['ffenc','hunks','%f'])
+    let g:airline_section_c = airline#section#create(['filetype'])
+    let g:airline_section_x = airline#section#create(['%P'])
+    let g:airline_section_y = airline#section#create(['%B'])
+    let g:airline_section_z = airline#section#create_right(['%l', '%c'])
 endfunction
-autocmd VimEnter * call AirlineInit()
+autocmd User AirlineAfterInit call AirlineInit()
 
 " Black settings
 let b:ale_fixers = ['black']
@@ -63,6 +67,7 @@ set shiftwidth=4
 set autoindent
 set path+=**
 set wildmenu
+set ic
 
 " Definitions
 let mapleader = "\<space>"
@@ -139,4 +144,4 @@ nmap <F8> :TagbarToggle<CR>
 
 " Black
 nnoremap <F9> :Black<CR>
-
+tnoremap <Esc> <C-\><C-n>
