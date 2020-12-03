@@ -67,6 +67,7 @@ set shiftwidth=4
 set autoindent
 set path+=**
 set wildmenu
+set termguicolors
 set ic
 
 " Definitions
