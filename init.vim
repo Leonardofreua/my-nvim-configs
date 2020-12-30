@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
 " Theme
