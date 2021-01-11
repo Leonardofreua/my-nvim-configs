@@ -6,7 +6,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
