@@ -13,6 +13,7 @@ Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'preservim/nerdcommenter'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Theme
@@ -146,3 +147,4 @@ nmap <F8> :TagbarToggle<CR>
 " Black
 nnoremap <F9> :Black<CR>
 tnoremap <Esc> <C-\><C-n>
+nnoremap <leader>d "_dd
